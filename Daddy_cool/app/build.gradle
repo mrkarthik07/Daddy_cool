@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        applicationId "com.recordingapplication"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+
+        manifestPlaceholders = [appName: "Gps-Rec App"]
+        renderscriptSupportModeEnabled true
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+    }
+
+}
+
+dependencies {
+    //    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:support-v4:23.2.0'
+    //    compile 'com.google.android.gms:play-services:+'
+    compile 'com.google.code.gson:gson:2.0'
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:gridlayout-v7:23.2.1'
+    compile files('libs/httpmime-4.1.1.jar')
+    compile files('libs/posapi.jar')
+    compile('com.google.android.gms:play-services:8.1.0')
+            {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+    compile project(path: ':processlib')
+}
